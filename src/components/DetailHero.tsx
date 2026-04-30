@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { MediaDetail } from "@/lib/types";
 import { FavoriteButton } from "./FavoriteButton";
+import { MoviePlayer } from "./MoviePlayer";
 import { TrailerPlayer } from "./TrailerPlayer";
 
 /**
@@ -107,6 +108,10 @@ export function DetailHero({ item }: { item: MediaDetail }) {
         </section>
       ) : (
         <p className="text-sm text-neutral-500">Трейлер не доступний.</p>
+      )}
+
+      {item.kind === "movie" && (
+        <MoviePlayer tmdbId={item.id} title={item.title} />
       )}
     </article>
   );
